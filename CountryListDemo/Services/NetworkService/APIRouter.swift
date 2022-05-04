@@ -28,7 +28,7 @@ protocol APIRouter {
 extension APIRouter {
     
     private var token: String {
-        return StorageRepository().getItem(ofType: .accessToken)
+        return ""
     }
     
     public var bearer: String {

@@ -8,6 +8,8 @@
 import UIKit
 import CoreData
 
+let log = Logger()
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

@@ -7,10 +7,9 @@
 
 import Foundation
 import Alamofire
-import FirebaseCrashlytics
 import PDFKit
 
-final class NetworkService {
+final class NetworkService: RequestInterceptor {
     
     static let shared: NetworkService = {
         let instance = NetworkService()
@@ -20,7 +19,6 @@ final class NetworkService {
     let locker = NSLock()
     var isRefreshing = false
     var completions: [(RetryResult) -> Void] = []
-    let storageRepository: StorageRepository = .init()
     
     private init() {}
     
@@ -48,13 +46,7 @@ final class NetworkService {
             }
         }
     }
-    
-    private func mappedErrorFromData(_ data: Data?) -> ErrorModel? {
-        guard let data = data else {
-            return nil
-        }
-        return try? JSONDecoder().decode(ErrorModel.self, from: data)
-    }
+}
 
 private func json(by data: Data?) -> String? {
     if
@@ -76,9 +68,6 @@ func message<T: Decodable>(by response: DataResponse<T, AFError>) -> String {
     if let json = json(by: response.data) {
         message += "\nJSON: "
         message += json
-    }
-    if response.error != nil {
-        logErrorByFirebase(with: response)
     }
     return message
 }

@@ -36,7 +36,7 @@ class Paginator<T: Codable> {
     }
 
     func fetchNextPage() {
-        guard currentOffset <= total else { return }
+      //  guard currentOffset <= total else { return }
         guard isNeedAddDetail else { return }
         isNeedAddDetail = false
         sendRequest()
@@ -54,11 +54,11 @@ class Paginator<T: Codable> {
         previousRequest = requestClosure(page, pageSize) { [weak self] data in
             switch data {
             case .success(let data):
-                guard let results = data.content else { return }
+                guard let results = data.data else { return }
                 self?.storedData.append(contentsOf: results)
                 self?.currentOffset += self?.limit ?? 10
                 self?.page += 1
-                self?.total = data.totalElements ?? 0
+               // self?.total = data.totalElements ?? 0
                 self?.onSuccess?(self?.storedData ?? [])
             case .failure(let error):
                 print(error.localizedDescription)
@@ -69,9 +69,8 @@ class Paginator<T: Codable> {
     }
 }
 
-struct FetchRequest<T : Codable>: Codable {
-    let content: [T]?
-    let totalPages: Int?
-    let totalElements: Int?
+struct FetchRequest<T: Codable>: Codable {
+    let data: [T]?
+    var links: Links?
+    var meta: Meta?
 }
-

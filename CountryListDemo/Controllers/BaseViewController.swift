@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Asset.white.color
+        view.backgroundColor = .white
     }
 }
 
