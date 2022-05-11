@@ -12,6 +12,7 @@ enum CountriesNetworkRouter: APIRouter {
     
     case fetchCountryList
     case fetchCountry(id: String)
+    case searchCountry(name: String)
     
     var method: HTTPMethod {
         return .get
@@ -29,7 +30,7 @@ enum CountriesNetworkRouter: APIRouter {
     var parameters: Parameters? {
         var params: Parameters = [:]
         switch self {
-        case .fetchCountryList, .fetchCountry:
+        case .fetchCountryList, .fetchCountry, .searchCountry:
             return nil
         }
         return params
@@ -50,6 +51,8 @@ enum CountriesNetworkRouter: APIRouter {
             path = "all"
         case .fetchCountry(let id):
             path = "alpha/\(id)"
+        case .searchCountry(let name):
+            path = "name/\(name)"
         }
         return Constants.countryDetailsBase + servicePath + path
     }

@@ -27,6 +27,18 @@ extension CountryListPresenter: CountryListViewOutput {
     func setLoadingStatus(type: ErrorType) {
         view?.setLoadingStatus(type: type)
     }
+    
+    func searchByText(search: String) {
+        guard !search.isEmpty else {
+            interactor?.fetchCountryList()
+            return
+        }
+        interactor?.searchByText(search: search)
+    }
+    
+    func reloadData() {
+        interactor?.fetchCountryList()
+    }
 }
 
 extension CountryListPresenter: CountryListInteractorOutput {
@@ -36,6 +48,7 @@ extension CountryListPresenter: CountryListInteractorOutput {
         setLoadingStatus(type: status)
         countryList = data
         view?.setData(data: data)
+        view?.stopRefresh()
         view?.reloadTableView()
     }
 }

@@ -53,12 +53,12 @@ class LoadingStatusView: UIView {
     func setLoadingStatus(type: ErrorType, view: UIView?) {
         switch type {
         case .wentWrongError:
-            networkErrorView.setTitle("Что-то пошло не так")
+            networkErrorView.setTitle("Sorry ;(")
             activityIndicator.isActiv = false
             stopLoading()
             hideStatusView(isHide: false, view: view)
         case .dataNotFound:
-            networkErrorView.setTitle("Данные не найдены!")
+            networkErrorView.setTitle("Not found!")
             hideStatusView(isHide: false, view: view)
             stopLoading()
         case .notError:

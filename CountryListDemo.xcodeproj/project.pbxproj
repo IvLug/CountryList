@@ -52,6 +52,8 @@
 		444F7A37282B670000B90CA6 /* ActyvityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A36282B670000B90CA6 /* ActyvityIndicator.swift */; };
 		444F7A39282B679A00B90CA6 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A38282B679A00B90CA6 /* NetworkErrorView.swift */; };
 		444F7A3B282B682500B90CA6 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A3A282B682500B90CA6 /* LoadingStatusView.swift */; };
+		44CB24A9282BC1F2003336D5 /* Extension+UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24A8282BC1F2003336D5 /* Extension+UISearchBar.swift */; };
+		44CB24AB282BC7E0003336D5 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24AA282BC7E0003336D5 /* Extension+UIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +104,8 @@
 		444F7A36282B670000B90CA6 /* ActyvityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActyvityIndicator.swift; sourceTree = "<group>"; };
 		444F7A38282B679A00B90CA6 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
 		444F7A3A282B682500B90CA6 /* LoadingStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatusView.swift; sourceTree = "<group>"; };
+		44CB24A8282BC1F2003336D5 /* Extension+UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UISearchBar.swift"; sourceTree = "<group>"; };
+		44CB24AA282BC7E0003336D5 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
 		B0BC0506099B8BDF6B0865A9 /* Pods-CountryListDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryListDemo.debug.xcconfig"; path = "Target Support Files/Pods-CountryListDemo/Pods-CountryListDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C96AEBCB4CB9D7F9EB810120 /* Pods_CountryListDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryListDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -371,6 +375,8 @@
 			children = (
 				444F7A0D282268C400B90CA6 /* Extension+UITableView.swift */,
 				444F7A0F2822692800B90CA6 /* Extension+UIView.swift */,
+				44CB24A8282BC1F2003336D5 /* Extension+UISearchBar.swift */,
+				44CB24AA282BC7E0003336D5 /* Extension+UIViewController.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -567,7 +573,9 @@
 				444F7987282259D500B90CA6 /* CountryListDemo.xcdatamodeld in Sources */,
 				444F79F02822637600B90CA6 /* CountryListInteractor.swift in Sources */,
 				444F79AB2822616100B90CA6 /* LogCategory.swift in Sources */,
+				44CB24AB282BC7E0003336D5 /* Extension+UIViewController.swift in Sources */,
 				444F7A07282266A800B90CA6 /* DetailCountryAssembly.swift in Sources */,
+				44CB24A9282BC1F2003336D5 /* Extension+UISearchBar.swift in Sources */,
 				444F79DA282261A800B90CA6 /* APIRouter.swift in Sources */,
 				444F79F62822646100B90CA6 /* BaseViewController.swift in Sources */,
 				444F7A06282266A800B90CA6 /* DetailCountryViewModel.swift in Sources */,
