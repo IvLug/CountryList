@@ -20,7 +20,7 @@ final class NetworkService: RequestInterceptor {
     var isRefreshing = false
     var completions: [(RetryResult) -> Void] = []
     
-    private init() {}
+    init() {}
     
     @discardableResult
     public func performRequest<T:Decodable>(route: APIRouter,
@@ -43,6 +43,17 @@ final class NetworkService: RequestInterceptor {
             return AF.request(request).validate().responseDecodable { (response: DataResponse<T, AFError>) in
                 log.debug(category: .network, message: message(by: response))
                 completion(response.result)
+            }
+        }
+    }
+    
+    public func fetchImage(urlStr: String, completion: @escaping (Data) -> Void) {
+        AF.request(urlStr).responseData { response in
+            switch response.result {
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

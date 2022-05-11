@@ -1,16 +1,17 @@
 //
-//  CommonNetworkRouter.swift
-//  customer
+//  CountriesNetworkRouter.swift
+//  CountryListDemo
 //
-//  Created by Egor Malyshev on 30.11.2021.
+//  Created by Ivan Lugantsov on 07.05.2022.
 //
 
 import Foundation
 import Alamofire
 
-enum CommonNetworkRouter: APIRouter {
+enum CountriesNetworkRouter: APIRouter {
     
-    case getBodyTypes((pageNumber: Int, pageSize: Int))
+    case fetchCountryList
+    case fetchCountry(id: String)
     
     var method: HTTPMethod {
         return .get
@@ -28,16 +29,14 @@ enum CommonNetworkRouter: APIRouter {
     var parameters: Parameters? {
         var params: Parameters = [:]
         switch self {
-        
-        case .getBodyTypes(let data):
-            params["pageNumber"] = data.pageNumber
-            params["pageSize"] = data.pageSize
+        case .fetchCountryList, .fetchCountry:
+            return nil
         }
         return params
     }
     
     var servicePath: String {
-        return "v1/common/"
+        return "/v3.1/"
     }
     
     var body: Data? {
@@ -47,10 +46,11 @@ enum CommonNetworkRouter: APIRouter {
     var path: String {
         var path = ""
         switch self {
-        case .getBodyTypes:
-            path = "body-types-list"
+        case .fetchCountryList:
+            path = "all"
+        case .fetchCountry(let id):
+            path = "alpha/\(id)"
         }
-        return Constants.baseUrl + servicePath + path
+        return Constants.countryDetailsBase + servicePath + path
     }
 }
-

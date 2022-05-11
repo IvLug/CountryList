@@ -30,7 +30,7 @@ extension View {
                                        modally: Bool = false,
                                        typeScreen: TypeScreen? = nil,
                                        navigation: Bool = false,
-                                       animated: Bool = false,
+                                       animated: Bool = true,
                                        completion: EmptyVoid? = nil) -> T {
         let module = T.assembly(navigation: navigation)
         switch typeScreen {

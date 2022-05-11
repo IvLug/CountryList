@@ -10,15 +10,14 @@ import SnapKit
 
 typealias NavigationVoid = () -> Void
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     private var window: UIWindow?  = {
         return UIApplication.shared.delegate?.window ?? UIWindow()
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
     }
 }
-

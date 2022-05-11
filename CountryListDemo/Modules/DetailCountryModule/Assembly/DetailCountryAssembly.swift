@@ -37,5 +37,9 @@ final class DetailCountryAssembly: ModuleAssembly {
         
         return assembly
     }
+    
+    func setCountry(data: CountryModel) {
+        presenter.country = data
+    }
 }
 

@@ -9,5 +9,5 @@ import Foundation
 
 struct Constants {
     
-    static let baseUrl = ""
+    static let countryDetailsBase = "https://restcountries.com"
 }
