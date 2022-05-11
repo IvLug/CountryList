@@ -23,11 +23,17 @@ extension CountryListPresenter: CountryListViewOutput {
     func viewDidLoad() {
         interactor?.fetchCountryList()
     }
+    
+    func setLoadingStatus(type: ErrorType) {
+        view?.setLoadingStatus(type: type)
+    }
 }
 
 extension CountryListPresenter: CountryListInteractorOutput {
     
     func getDataCountryList(data: [CountryModel]) {
+        let status: ErrorType = data.isEmpty ? .dataNotFound : .notError
+        setLoadingStatus(type: status)
         countryList = data
         view?.setData(data: data)
         view?.reloadTableView()

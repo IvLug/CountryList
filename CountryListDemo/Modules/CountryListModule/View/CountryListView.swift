@@ -3,6 +3,7 @@ import UIKit
 protocol CountryListViewInput: View {
     func reloadTableView()
     func setData(data: [CountryModel])
+    func setLoadingStatus(type: ErrorType)
 }
 
 protocol CountryListViewOutput: TableViewDataSourseDelegate {
@@ -15,6 +16,8 @@ final class CountryListView: BaseViewController {
     var output: CountryListViewOutput?
     
     var dataSourse = TableViewDataSourse<CountryModel>()
+    
+    private lazy var loadingStatusView = LoadingStatusView()
     
     private lazy var tableView: UITableView = {
         let view = UITableView()
@@ -29,6 +32,7 @@ final class CountryListView: BaseViewController {
         super.viewDidLoad()
         dataSourse.delegate = output
         output?.viewDidLoad()
+        setLoadingStatus(type: .isLoading)
         addSubviews()
     }
     
@@ -39,16 +43,25 @@ final class CountryListView: BaseViewController {
     
     private func addSubviews() {
         view.addSubview(tableView)
+        view.addSubview(loadingStatusView)
     }
     
     private func makeConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        loadingStatusView.snp.makeConstraints { make in
+            make.edges.equalTo(tableView)
+        }
     }
 }
 
 extension CountryListView: CountryListViewInput {
+    
+    func setLoadingStatus(type: ErrorType) {
+        loadingStatusView.setLoadingStatus(type: type, view: tableView)
+    }
+    
     
     func reloadTableView() {
         tableView.reloadData()

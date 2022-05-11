@@ -6,6 +6,7 @@ protocol DetailCountryInteractorInput {
 
 protocol DetailCountryInteractorOutput: AnyObject {
     func getData(data: [CurtainDataModel])
+    func setLoadingStatus(type: ErrorType)
 }
 
 final class DetailCountryInteractor {
@@ -27,6 +28,7 @@ extension DetailCountryInteractor: DetailCountryInteractorInput {
                 self?.setDataToModel(data: data)
             case .failure(let error):
                 print(error)
+                self?.output?.setLoadingStatus(type: .wentWrongError)
             }
         }
     }

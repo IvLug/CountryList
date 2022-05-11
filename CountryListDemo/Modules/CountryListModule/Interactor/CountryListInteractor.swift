@@ -6,6 +6,7 @@ protocol CountryListInteractorInput {
 
 protocol CountryListInteractorOutput: AnyObject {
     func getDataCountryList(data: [CountryModel])
+    func setLoadingStatus(type: ErrorType)
 }
 
 final class CountryListInteractor {
@@ -26,6 +27,7 @@ extension CountryListInteractor: CountryListInteractorInput {
                 output?.getDataCountryList(data: data)
             case .failure(let error):
                 print(error)
+                output?.setLoadingStatus(type: .wentWrongError)
             }
         }
     }

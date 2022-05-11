@@ -3,6 +3,7 @@ import UIKit
 protocol DetailCountryViewInput: View {
     func setData(data: CountryModel)
     func reloadData()
+    func setLoadingStatus(type: ErrorType)
 }
 
 protocol DetailCountryViewOutput: CurtainViewProtocol {
@@ -37,9 +38,12 @@ final class DetailCountryView: BaseViewController {
         return view
     }()
     
+    private lazy var loadingStatusView = LoadingStatusView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
+        setLoadingStatus(type: .isLoading)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,6 +61,7 @@ final class DetailCountryView: BaseViewController {
         view.addSubview(flagImage)
         view.addSubview(scrollView)
         scrollView.addSubview(bottomView)
+        view.addSubview(loadingStatusView)
     }
     
     private func makeConstraints() {
@@ -76,10 +81,17 @@ final class DetailCountryView: BaseViewController {
             make.centerX.equalToSuperview()
             make.top.bottom.equalToSuperview()
         }
+        loadingStatusView.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView)
+        }
     }
 }
 
 extension DetailCountryView: DetailCountryViewInput {
+    
+    func setLoadingStatus(type: ErrorType) {
+        loadingStatusView.setLoadingStatus(type: type, view: scrollView)
+    }
     
     func setData(data: CountryModel) {
         flagImage.kf.loadImage(urlStr: data.flags?.png ?? "")

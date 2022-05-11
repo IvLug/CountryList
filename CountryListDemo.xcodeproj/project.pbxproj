@@ -49,6 +49,9 @@
 		444F7A2F282AD8EC00B90CA6 /* CurtainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A2E282AD8EC00B90CA6 /* CurtainView.swift */; };
 		444F7A31282ADC9300B90CA6 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A30282ADC9300B90CA6 /* TopView.swift */; };
 		444F7A34282AE0AC00B90CA6 /* DatailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A33282AE0AC00B90CA6 /* DatailsTableViewCell.swift */; };
+		444F7A37282B670000B90CA6 /* ActyvityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A36282B670000B90CA6 /* ActyvityIndicator.swift */; };
+		444F7A39282B679A00B90CA6 /* NetworkErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A38282B679A00B90CA6 /* NetworkErrorView.swift */; };
+		444F7A3B282B682500B90CA6 /* LoadingStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A3A282B682500B90CA6 /* LoadingStatusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,9 @@
 		444F7A2E282AD8EC00B90CA6 /* CurtainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurtainView.swift; sourceTree = "<group>"; };
 		444F7A30282ADC9300B90CA6 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		444F7A33282AE0AC00B90CA6 /* DatailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatailsTableViewCell.swift; sourceTree = "<group>"; };
+		444F7A36282B670000B90CA6 /* ActyvityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActyvityIndicator.swift; sourceTree = "<group>"; };
+		444F7A38282B679A00B90CA6 /* NetworkErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorView.swift; sourceTree = "<group>"; };
+		444F7A3A282B682500B90CA6 /* LoadingStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStatusView.swift; sourceTree = "<group>"; };
 		B0BC0506099B8BDF6B0865A9 /* Pods-CountryListDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryListDemo.debug.xcconfig"; path = "Target Support Files/Pods-CountryListDemo/Pods-CountryListDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C96AEBCB4CB9D7F9EB810120 /* Pods_CountryListDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryListDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -141,6 +147,7 @@
 		444F797B282259D500B90CA6 /* CountryListDemo */ = {
 			isa = PBXGroup;
 			children = (
+				444F7A35282B66E800B90CA6 /* View */,
 				444F7A27282A59E600B90CA6 /* Protocols */,
 				444F79A12822616100B90CA6 /* Logger */,
 				444F799528225AA500B90CA6 /* Application */,
@@ -419,6 +426,16 @@
 			path = SubView;
 			sourceTree = "<group>";
 		};
+		444F7A35282B66E800B90CA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				444F7A36282B670000B90CA6 /* ActyvityIndicator.swift */,
+				444F7A38282B679A00B90CA6 /* NetworkErrorView.swift */,
+				444F7A3A282B682500B90CA6 /* LoadingStatusView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		617C67CD7DAC2DF2AA7EEB32 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +560,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				444F7A09282266A800B90CA6 /* DetailCountryView.swift in Sources */,
+				444F7A3B282B682500B90CA6 /* LoadingStatusView.swift in Sources */,
 				444F7A2C282AABC100B90CA6 /* CostomTransition.swift in Sources */,
 				444F7A1728226D5D00B90CA6 /* TableViewDataSourse.swift in Sources */,
 				444F79EF2822637600B90CA6 /* CountryListView.swift in Sources */,
@@ -570,12 +588,14 @@
 				444F7A2F282AD8EC00B90CA6 /* CurtainView.swift in Sources */,
 				444F7A102822692800B90CA6 /* Extension+UIView.swift in Sources */,
 				444F79ED2822637600B90CA6 /* CountryListAssembly.swift in Sources */,
+				444F7A37282B670000B90CA6 /* ActyvityIndicator.swift in Sources */,
 				444F7A0E282268C400B90CA6 /* Extension+UITableView.swift in Sources */,
 				444F7A0B282266A800B90CA6 /* DetailCountryRouter.swift in Sources */,
 				444F7A1D2826771700B90CA6 /* CountriesNetworkRouter.swift in Sources */,
 				444F79D8282261A800B90CA6 /* Paginator.swift in Sources */,
 				444F799828225B3E00B90CA6 /* ImageCashe.swift in Sources */,
 				444F7A24282960C700B90CA6 /* CountryCellView.swift in Sources */,
+				444F7A39282B679A00B90CA6 /* NetworkErrorView.swift in Sources */,
 				444F7A29282A59F400B90CA6 /* AssociatedStore.swift in Sources */,
 				444F7A08282266A800B90CA6 /* DetailCountryPresenter.swift in Sources */,
 				444F7A0A282266A800B90CA6 /* DetailCountryInteractor.swift in Sources */,

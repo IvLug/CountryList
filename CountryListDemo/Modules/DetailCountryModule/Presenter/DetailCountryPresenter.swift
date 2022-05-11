@@ -23,8 +23,14 @@ extension DetailCountryPresenter: DetailCountryInteractorOutput {
     func getData(data: [CurtainDataModel]) {
         self.model = data
         guard let country = data.first?.model else {return }
+        let status: ErrorType = data.isEmpty ? .dataNotFound : .notError
+        setLoadingStatus(type: status)
         view?.setData(data: country)
         view?.reloadData()
+    }
+    
+    func setLoadingStatus(type: ErrorType) {
+        view?.setLoadingStatus(type: type)
     }
 }
 
