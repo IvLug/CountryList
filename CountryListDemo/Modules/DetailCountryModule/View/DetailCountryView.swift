@@ -114,6 +114,13 @@ extension DetailCountryView: UIScrollViewDelegate {
                 self.flagImage.transform = CGAffineTransform(scaleX: num, y: num)
             }
         }
+        
+        if offSetY == -200 {
+            UIView.animate(withDuration: 0.3) {
+                self.flagImage.alpha = 1
+                self.flagImage.transform = .identity
+            }
+        }
     }
 }
 
