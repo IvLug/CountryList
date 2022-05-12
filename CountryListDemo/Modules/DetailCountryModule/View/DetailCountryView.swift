@@ -34,7 +34,6 @@ final class DetailCountryView: BaseViewController {
     private lazy var bottomView: CurtainView = {
         let view = CurtainView()
         view.output = output
-        view.delegate = self
         return view
     }()
     
@@ -75,12 +74,12 @@ final class DetailCountryView: BaseViewController {
             make.top.equalTo(self.view.safeAreaLayoutGuide)
             make.left.right.bottom.equalToSuperview()
         }
+        
         bottomView.snp.makeConstraints { make in
-            make.height.equalToSuperview()
             make.width.equalToSuperview().inset(16)
-            make.centerX.equalToSuperview()
-            make.top.bottom.equalToSuperview()
+            make.top.centerX.bottom.equalToSuperview()
         }
+    
         loadingStatusView.snp.makeConstraints { make in
             make.edges.equalTo(scrollView)
         }
@@ -103,30 +102,11 @@ extension DetailCountryView: DetailCountryViewInput {
     }
 }
 
-extension DetailCountryView: CurtainScrollDelegate {
-    
-    func setOffset() -> CGFloat {
-        return .zero
-    }
-    
-    func getOffSet(offset: CGFloat) {
-        scrollView.contentOffset.y = offset
-    }
-}
-
 extension DetailCountryView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offSetY = scrollView.contentOffset.y
         
-        if scrollView.contentOffset.y <= -200 {
-            scrollView.contentOffset.y = -200
-        }
-        
-        if scrollView.contentOffset.y >= 0 {
-            scrollView.contentOffset.y = 0
-        }
-                
         if offSetY > -200 && offSetY < 0 {
             let num = (abs(offSetY) / 20) / 10
             flagImage.alpha = num

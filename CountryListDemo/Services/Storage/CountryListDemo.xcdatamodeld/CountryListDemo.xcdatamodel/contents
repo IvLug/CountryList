@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Countries" representedClassName="Countries" syncable="YES">
+        <attribute name="country" optional="YES" attributeType="Transformable" customClassName="[CountryModel]"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class"/>
+    <entity name="MyProduct" representedClassName="MyProduct" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Countries" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="Country" positionX="172.23486328125" positionY="50.9075927734375" width="128" height="29"/>
+        <element name="MyProduct" positionX="-273.751220703125" positionY="79.50738525390625" width="128" height="43"/>
+    </elements>
+</model>

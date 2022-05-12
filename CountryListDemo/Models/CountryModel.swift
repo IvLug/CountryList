@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct ProductModel: Codable {
+    let nameNum: Int
+    let id: Float
+}
+
 struct CountryModel: Codable {
     let name: Name?
     let tld: [String]?
