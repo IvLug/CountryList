@@ -58,6 +58,8 @@ final class CountryListView: BaseViewController {
         return refresh
     }()
     
+    let storage = StorageManager<MyProduct>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()

@@ -12,21 +12,14 @@ protocol CurtainViewProtocol: AnyObject {
     func toggleExpansionOfType(with index: Int)
 }
 
-protocol CurtainScrollDelegate {
-    func setOffset() -> CGFloat
-    func getOffSet(offset: CGFloat)
-}
-
 class CurtainView: UIView {
     
     var output: CurtainViewProtocol?
     var previousIndexPath: IndexPath?
-    
-    var delegate: CurtainScrollDelegate?
-    
-    var offSet: CGFloat = 0
-    
-    var isDownCurtain = true
+            
+    var height: CGFloat {
+         self.tableView.contentSize.height
+    }
         
     private lazy var topView: TopView = {
         let view = TopView()
@@ -40,6 +33,7 @@ class CurtainView: UIView {
         tableView.register(cellWithClass: DatailsTableViewCell.self)
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
+        tableView.isScrollEnabled = false
         return tableView
     }()
     
@@ -59,6 +53,7 @@ class CurtainView: UIView {
     }
     
     private func setConstraints() {
+        
         topView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalTo(self.snp.top).inset(20)
@@ -67,7 +62,8 @@ class CurtainView: UIView {
         }
         tableView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).offset(8)
-            make.bottom.left.right.equalToSuperview()
+            make.height.equalTo(height)
+            make.left.bottom.right.equalToSuperview()
         }
     }
     
@@ -77,21 +73,15 @@ class CurtainView: UIView {
     
     func reloadData() {
         tableView.reloadData()
+        tableViewRemake()
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offSetY = tableView.contentOffset.y
-        if  scrollView.contentOffset.y < 0 {
-            scrollView.contentOffset.y = 0
+    func tableViewRemake() {
+        tableView.snp.remakeConstraints { make in
+            make.top.equalTo(topView.snp.bottom).offset(8)
+            make.height.equalTo(height)
+            make.left.bottom.right.equalToSuperview()
         }
-    }
-    
-    func setOffset() -> CGFloat {
-        tableView.contentOffset.y
-    }
-    
-    func getOffSet(offset: CGFloat) {
-        tableView.contentOffset.y = offset
     }
 }
 
@@ -105,9 +95,11 @@ extension CurtainView: UITableViewDelegate {
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             }
             tableView.reloadSections([indexPath.section], with: .fade)
+            tableViewRemake()
         } else {
             if model?.children?.isEmpty == false, tableView.cellForRow(at: IndexPath(row: 0, section: indexPath.section)) != nil {
                 tableView.reloadRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .none)
+                tableViewRemake()
             }
         }
     }
