@@ -49,6 +49,13 @@ final class DetailCountryView: BaseViewController {
         super.viewWillAppear(animated)
         navigationItem.title = "Country Details"
         output?.viewWillAppear()
+        isHideTabBar(true)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -65,7 +72,7 @@ final class DetailCountryView: BaseViewController {
     
     private func makeConstraints() {
         flagImage.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide)
+            make.top.equalTo(self.view.safeAreaLayoutGuide).inset(16)
             make.width.equalToSuperview().inset(32)
             make.height.equalTo(200)
             make.centerX.equalToSuperview()

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TableViewDataSourseDelegate: AnyObject {
-    func setDataToCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
+    func setDataToCell(indexPath: IndexPath) -> UITableViewCell
 }
 
 class TableViewDataSourse<T>: NSObject, UITableViewDataSource {
@@ -26,6 +26,6 @@ class TableViewDataSourse<T>: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return delegate?.setDataToCell(indexPath: indexPath, tableView: tableView) ?? UITableViewCell()
+        return delegate?.setDataToCell(indexPath: indexPath) ?? UITableViewCell()
     }
 }

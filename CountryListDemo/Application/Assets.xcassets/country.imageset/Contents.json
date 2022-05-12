@@ -1,0 +1,28 @@
+{
+  "images" : [
+    {
+      "filename" : "icons8-country-100.png",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "icons8-country-101.png",
+      "height-class" : "compact",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "icons8-country-102.png",
+      "idiom" : "universal",
+      "width-class" : "compact"
+    },
+    {
+      "filename" : "icons8-country-103.png",
+      "height-class" : "compact",
+      "idiom" : "universal",
+      "width-class" : "compact"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

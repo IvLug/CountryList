@@ -2,7 +2,7 @@ final class CountryListViewModel {
 
 }
 
-struct Page {
-    let pageNumber: Int
-    let pageSize: Int
+enum CountryListType {
+    case inRegion
+    case all
 }

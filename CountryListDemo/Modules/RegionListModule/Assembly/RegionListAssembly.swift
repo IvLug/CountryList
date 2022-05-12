@@ -1,12 +1,12 @@
 import UIKit
 
-final class CountryListAssembly: ModuleAssembly {
+final class RegionListAssembly: ModuleAssembly {
     
     var view: UIViewController
     
-    lazy var presenter = CountryListPresenter()
-    lazy var interactor = CountryListInteractor()
-    lazy var router = CountryListRouter()
+    lazy var presenter = RegionListPresenter()
+    lazy var interactor = RegionListInteractor()
+    lazy var router = RegionListRouter()
     
     private init() {
         view = UIViewController()
@@ -15,7 +15,7 @@ final class CountryListAssembly: ModuleAssembly {
     static func assembly(navigation: Bool = true) -> Self {
         let assembly = self.init()
         
-        let view = CountryListView()
+        let view = RegionListView()
         
         assembly.view = view
         
@@ -37,9 +37,5 @@ final class CountryListAssembly: ModuleAssembly {
         
         return assembly
     }
-    
-    func setRegion(_ region: String, type: CountryListType) {
-        presenter.region = region
-        presenter.type = type
-    }
 }
+

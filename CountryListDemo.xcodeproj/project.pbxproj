@@ -37,7 +37,7 @@
 		444F7A0A282266A800B90CA6 /* DetailCountryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A03282266A800B90CA6 /* DetailCountryInteractor.swift */; };
 		444F7A0B282266A800B90CA6 /* DetailCountryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A05282266A800B90CA6 /* DetailCountryRouter.swift */; };
 		444F7A0E282268C400B90CA6 /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A0D282268C400B90CA6 /* Extension+UITableView.swift */; };
-		444F7A102822692800B90CA6 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A0F2822692800B90CA6 /* Extension+UIView.swift */; };
+		444F7A102822692800B90CA6 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A0F2822692800B90CA6 /* View.swift */; };
 		444F7A1728226D5D00B90CA6 /* TableViewDataSourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A1628226D5D00B90CA6 /* TableViewDataSourse.swift */; };
 		444F7A1D2826771700B90CA6 /* CountriesNetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A1C2826771700B90CA6 /* CountriesNetworkRouter.swift */; };
 		444F7A1F2826790000B90CA6 /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F7A1E2826790000B90CA6 /* CountryModel.swift */; };
@@ -57,6 +57,15 @@
 		44CB24B3282BCC3F003336D5 /* Countries+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24B1282BCC3F003336D5 /* Countries+CoreDataClass.swift */; };
 		44CB24B4282BCC3F003336D5 /* Countries+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24B2282BCC3F003336D5 /* Countries+CoreDataProperties.swift */; };
 		44CB24B6282BD93B003336D5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24B5282BD93B003336D5 /* StorageManager.swift */; };
+		44CB24D2282D5999003336D5 /* RegionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24C7282D5999003336D5 /* RegionListViewModel.swift */; };
+		44CB24D3282D5999003336D5 /* RegionListAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24C9282D5999003336D5 /* RegionListAssembly.swift */; };
+		44CB24D4282D5999003336D5 /* RegionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24CB282D5999003336D5 /* RegionListPresenter.swift */; };
+		44CB24D5282D5999003336D5 /* RegionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24CD282D5999003336D5 /* RegionListView.swift */; };
+		44CB24D6282D5999003336D5 /* RegionListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24CF282D5999003336D5 /* RegionListInteractor.swift */; };
+		44CB24D7282D5999003336D5 /* RegionListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24D1282D5999003336D5 /* RegionListRouter.swift */; };
+		44CB24D9282D9A76003336D5 /* RegionTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24D8282D9A76003336D5 /* RegionTableVIewCell.swift */; };
+		44CB24EF282DB663003336D5 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24EE282DB663003336D5 /* TabBarController.swift */; };
+		44CB24F1282DBF78003336D5 /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CB24F0282DBF78003336D5 /* UIImage+Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +101,7 @@
 		444F7A03282266A800B90CA6 /* DetailCountryInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCountryInteractor.swift; sourceTree = "<group>"; };
 		444F7A05282266A800B90CA6 /* DetailCountryRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCountryRouter.swift; sourceTree = "<group>"; };
 		444F7A0D282268C400B90CA6 /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
-		444F7A0F2822692800B90CA6 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		444F7A0F2822692800B90CA6 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		444F7A1628226D5D00B90CA6 /* TableViewDataSourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSourse.swift; sourceTree = "<group>"; };
 		444F7A1C2826771700B90CA6 /* CountriesNetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesNetworkRouter.swift; sourceTree = "<group>"; };
 		444F7A1E2826790000B90CA6 /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
@@ -112,6 +121,15 @@
 		44CB24B1282BCC3F003336D5 /* Countries+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Countries+CoreDataClass.swift"; sourceTree = "<group>"; };
 		44CB24B2282BCC3F003336D5 /* Countries+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Countries+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		44CB24B5282BD93B003336D5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		44CB24C7282D5999003336D5 /* RegionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListViewModel.swift; sourceTree = "<group>"; };
+		44CB24C9282D5999003336D5 /* RegionListAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListAssembly.swift; sourceTree = "<group>"; };
+		44CB24CB282D5999003336D5 /* RegionListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListPresenter.swift; sourceTree = "<group>"; };
+		44CB24CD282D5999003336D5 /* RegionListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListView.swift; sourceTree = "<group>"; };
+		44CB24CF282D5999003336D5 /* RegionListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListInteractor.swift; sourceTree = "<group>"; };
+		44CB24D1282D5999003336D5 /* RegionListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionListRouter.swift; sourceTree = "<group>"; };
+		44CB24D8282D9A76003336D5 /* RegionTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionTableVIewCell.swift; sourceTree = "<group>"; };
+		44CB24EE282DB663003336D5 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		44CB24F0282DBF78003336D5 /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 		B0BC0506099B8BDF6B0865A9 /* Pods-CountryListDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CountryListDemo.debug.xcconfig"; path = "Target Support Files/Pods-CountryListDemo/Pods-CountryListDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C96AEBCB4CB9D7F9EB810120 /* Pods_CountryListDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountryListDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,10 +175,10 @@
 		444F797B282259D500B90CA6 /* CountryListDemo */ = {
 			isa = PBXGroup;
 			children = (
+				444F799528225AA500B90CA6 /* Application */,
 				444F7A35282B66E800B90CA6 /* View */,
 				444F7A27282A59E600B90CA6 /* Protocols */,
 				444F79A12822616100B90CA6 /* Logger */,
-				444F799528225AA500B90CA6 /* Application */,
 				444F799428225A9C00B90CA6 /* Services */,
 				444F7A1128226B5B00B90CA6 /* Models */,
 				444F7A0C282267B200B90CA6 /* Extension+ */,
@@ -173,6 +191,7 @@
 		444F7993282259F600B90CA6 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				44CB24C5282D5999003336D5 /* RegionListModule */,
 				444F79F9282266A800B90CA6 /* DetailCountryModule */,
 				444F79DF2822637600B90CA6 /* CountryListModule */,
 			);
@@ -310,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				444F79F32822646100B90CA6 /* BaseViewController.swift */,
+				44CB24EE282DB663003336D5 /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -380,9 +400,9 @@
 			isa = PBXGroup;
 			children = (
 				444F7A0D282268C400B90CA6 /* Extension+UITableView.swift */,
-				444F7A0F2822692800B90CA6 /* Extension+UIView.swift */,
 				44CB24A8282BC1F2003336D5 /* Extension+UISearchBar.swift */,
 				44CB24AA282BC7E0003336D5 /* Extension+UIViewController.swift */,
+				44CB24F0282DBF78003336D5 /* UIImage+Extention.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -415,6 +435,7 @@
 		444F7A27282A59E600B90CA6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				444F7A0F2822692800B90CA6 /* View.swift */,
 				444F7A28282A59F400B90CA6 /* AssociatedStore.swift */,
 			);
 			path = Protocols;
@@ -457,6 +478,76 @@
 				44CB24B5282BD93B003336D5 /* StorageManager.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		44CB24C5282D5999003336D5 /* RegionListModule */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24C6282D5999003336D5 /* Entity */,
+				44CB24C8282D5999003336D5 /* Assembly */,
+				44CB24CA282D5999003336D5 /* Presenter */,
+				44CB24CC282D5999003336D5 /* View */,
+				44CB24CE282D5999003336D5 /* Interactor */,
+				44CB24D0282D5999003336D5 /* Router */,
+			);
+			path = RegionListModule;
+			sourceTree = "<group>";
+		};
+		44CB24C6282D5999003336D5 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24C7282D5999003336D5 /* RegionListViewModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		44CB24C8282D5999003336D5 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24C9282D5999003336D5 /* RegionListAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		44CB24CA282D5999003336D5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24CB282D5999003336D5 /* RegionListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44CB24CC282D5999003336D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24DA282D9A7B003336D5 /* SubViews */,
+				44CB24CD282D5999003336D5 /* RegionListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44CB24CE282D5999003336D5 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24CF282D5999003336D5 /* RegionListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		44CB24D0282D5999003336D5 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24D1282D5999003336D5 /* RegionListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		44CB24DA282D9A7B003336D5 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				44CB24D8282D9A76003336D5 /* RegionTableVIewCell.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		617C67CD7DAC2DF2AA7EEB32 /* Pods */ = {
@@ -592,8 +683,10 @@
 				444F79AB2822616100B90CA6 /* LogCategory.swift in Sources */,
 				44CB24AB282BC7E0003336D5 /* Extension+UIViewController.swift in Sources */,
 				444F7A07282266A800B90CA6 /* DetailCountryAssembly.swift in Sources */,
+				44CB24D2282D5999003336D5 /* RegionListViewModel.swift in Sources */,
 				44CB24A9282BC1F2003336D5 /* Extension+UISearchBar.swift in Sources */,
 				444F79DA282261A800B90CA6 /* APIRouter.swift in Sources */,
+				44CB24EF282DB663003336D5 /* TabBarController.swift in Sources */,
 				444F79F62822646100B90CA6 /* BaseViewController.swift in Sources */,
 				444F7A06282266A800B90CA6 /* DetailCountryViewModel.swift in Sources */,
 				444F79AA2822616100B90CA6 /* LogWriter.swift in Sources */,
@@ -605,27 +698,34 @@
 				444F79F12822637600B90CA6 /* CountryListRouter.swift in Sources */,
 				444F797D282259D500B90CA6 /* AppDelegate.swift in Sources */,
 				444F7A262829664300B90CA6 /* WordDeclinationService.swift in Sources */,
+				44CB24D5282D5999003336D5 /* RegionListView.swift in Sources */,
 				444F79A72822616100B90CA6 /* Log.swift in Sources */,
+				44CB24D3282D5999003336D5 /* RegionListAssembly.swift in Sources */,
 				44CB24B4282BCC3F003336D5 /* Countries+CoreDataProperties.swift in Sources */,
 				444F79A92822616100B90CA6 /* LogLevel.swift in Sources */,
 				444F7A1F2826790000B90CA6 /* CountryModel.swift in Sources */,
 				444F799A28225B5E00B90CA6 /* ImageLoader.swift in Sources */,
 				444F79DC282261A800B90CA6 /* NetworkService.swift in Sources */,
 				444F7A2F282AD8EC00B90CA6 /* CurtainView.swift in Sources */,
-				444F7A102822692800B90CA6 /* Extension+UIView.swift in Sources */,
+				444F7A102822692800B90CA6 /* View.swift in Sources */,
 				444F79ED2822637600B90CA6 /* CountryListAssembly.swift in Sources */,
 				44CB24B6282BD93B003336D5 /* StorageManager.swift in Sources */,
+				44CB24F1282DBF78003336D5 /* UIImage+Extention.swift in Sources */,
 				444F7A37282B670000B90CA6 /* ActyvityIndicator.swift in Sources */,
 				444F7A0E282268C400B90CA6 /* Extension+UITableView.swift in Sources */,
 				444F7A0B282266A800B90CA6 /* DetailCountryRouter.swift in Sources */,
+				44CB24D4282D5999003336D5 /* RegionListPresenter.swift in Sources */,
 				444F7A1D2826771700B90CA6 /* CountriesNetworkRouter.swift in Sources */,
 				444F79D8282261A800B90CA6 /* Paginator.swift in Sources */,
+				44CB24D6282D5999003336D5 /* RegionListInteractor.swift in Sources */,
+				44CB24D9282D9A76003336D5 /* RegionTableVIewCell.swift in Sources */,
 				44CB24B3282BCC3F003336D5 /* Countries+CoreDataClass.swift in Sources */,
 				444F799828225B3E00B90CA6 /* ImageCashe.swift in Sources */,
 				444F7A24282960C700B90CA6 /* CountryCellView.swift in Sources */,
 				444F7A39282B679A00B90CA6 /* NetworkErrorView.swift in Sources */,
 				444F7A29282A59F400B90CA6 /* AssociatedStore.swift in Sources */,
 				444F7A08282266A800B90CA6 /* DetailCountryPresenter.swift in Sources */,
+				44CB24D7282D5999003336D5 /* RegionListRouter.swift in Sources */,
 				444F7A0A282266A800B90CA6 /* DetailCountryInteractor.swift in Sources */,
 				444F79EE2822637600B90CA6 /* CountryListPresenter.swift in Sources */,
 				444F79DE2822624B00B90CA6 /* Constants.swift in Sources */,

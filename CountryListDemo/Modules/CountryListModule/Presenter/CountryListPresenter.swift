@@ -5,6 +5,9 @@ final class CountryListPresenter {
     var interactor: CountryListInteractorInput?
     var router: CountryListRouterInput?
     
+    var region: String?
+    var type: CountryListType = .all
+    
     var countryList: [CountryModel] = []
 }
 
@@ -14,14 +17,14 @@ extension CountryListPresenter: CountryListViewOutput {
         router?.showCountryDetail(country: country)
     }
     
-    func setDataToCell(indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-        let cell: CountryTableViewCell = tableView.dequeueCell(at: indexPath)
-        cell.setData(data: countryList[indexPath.row])
-        return cell
-    }
-    
     func viewDidLoad() {
-        interactor?.fetchCountryList()
+        switch type {
+        case .all:
+            interactor?.fetchCountryList()
+        case .inRegion:
+            guard let region = region else { return }
+            interactor?.fetchCountries(in: region)
+        }
     }
     
     func setLoadingStatus(type: ErrorType) {

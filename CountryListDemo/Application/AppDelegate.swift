@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.overrideUserInterfaceStyle = .light
-        let vc = CountryListAssembly.assembly().view
+        let vc = TabBarController() //RegionListAssembly.assembly().view
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         return true

@@ -8,9 +8,10 @@ protocol CountryListViewInput: View {
     func stopRefresh()
 }
 
-protocol CountryListViewOutput: TableViewDataSourseDelegate {
+protocol CountryListViewOutput: AnyObject {
     func viewDidLoad()
     var countryList: [CountryModel] { get }
+    var type: CountryListType { get }
     func showCountryDetail(country: CountryModel)
     func searchByText(search: String)
     func reloadData()
@@ -19,11 +20,15 @@ protocol CountryListViewOutput: TableViewDataSourseDelegate {
 final class CountryListView: BaseViewController {
     var output: CountryListViewOutput?
     
-    var dataSourse = TableViewDataSourse<CountryModel>()
+    private var dataSourse = TableViewDataSourse<CountryModel>()
     
     private lazy var loadingStatusView = LoadingStatusView()
     private var cancellables = Set<AnyCancellable>()
     private var isRefreshing = false
+    
+    var isHideTabBar: Bool {
+        output?.type == .all ? false : true
+    }
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -33,6 +38,7 @@ final class CountryListView: BaseViewController {
             string: "Search",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         )
+        searchBar.searchTextField.tintColor = .gray
         searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         searchBar.searchTextField.delegate = self
         searchBar.setTextFieldColor(UIColor.systemGray6)
@@ -46,23 +52,25 @@ final class CountryListView: BaseViewController {
         view.delegate = self
         view.dataSource = dataSourse
         view.register(cellWithClass: CountryTableViewCell.self)
-        view.refreshControl = refreshControl
         return view
     }()
     
-    lazy var refreshControl: UIRefreshControl = {
+    private lazy var refreshControl: UIRefreshControl = {
         let refresh = UIRefreshControl()
         refresh.tintColor = .gray
         refresh.attributedTitle = NSAttributedString(string: "Wait Please")
         refresh.addTarget(self, action: #selector(reload), for: .valueChanged)
         return refresh
     }()
-    
-    let storage = StorageManager<MyProduct>()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        isHideTabBar(isHideTabBar)
     }
     
     override func viewWillLayoutSubviews() {
@@ -71,34 +79,52 @@ final class CountryListView: BaseViewController {
     }
     
     private func configure() {
-        dataSourse.delegate = output
+        switch output?.type {
+        case .all:
+            tableView.refreshControl = refreshControl
+            observeSearchBar()
+            hideKeyboardWhenTappedAround()
+        default: break
+        }
+        
+        dataSourse.delegate = self
         output?.viewDidLoad()
         setLoadingStatus(type: .isLoading)
         addSubviews()
-        observeSearchBar()
-        hideKeyboardWhenTappedAround()
         navigationItem.title = "Country List"
     }
     
     private func addSubviews() {
-        view.addSubview(searchBar)
+        switch output?.type {
+        case .all:
+            self.navigationController?.navigationBar.topItem?.titleView = searchBar
+        default: break
+        }
         view.addSubview(tableView)
         view.addSubview(loadingStatusView)
     }
     
     private func makeConstraints() {
         
-        searchBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).inset(12)
-            make.leading.trailing.equalToSuperview().inset(16)
-        }
-        searchBar.searchTextField.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.height.equalTo(56)
-        }
-        tableView.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).inset(-14)
-            make.leading.bottom.trailing.equalToSuperview()
+        switch output?.type {
+        case .all:
+            searchBar.snp.makeConstraints { make in
+                make.left.right.equalToSuperview().inset(16)
+            }
+            searchBar.searchTextField.snp.makeConstraints { make in
+                make.left.centerY.right.equalToSuperview()
+                make.height.equalTo(36)
+            }
+            tableView.snp.makeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide)
+                make.leading.bottom.trailing.equalToSuperview()
+            }
+        case .inRegion:
+            tableView.snp.makeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide).inset(12)
+                make.leading.bottom.trailing.equalToSuperview()
+            }
+        default: break
         }
         loadingStatusView.snp.makeConstraints { make in
             make.edges.equalTo(tableView)
@@ -132,7 +158,6 @@ extension CountryListView: CountryListViewInput {
         loadingStatusView.setLoadingStatus(type: type, view: tableView)
     }
     
-    
     func reloadTableView() {
         tableView.reloadData()
     }
@@ -165,5 +190,15 @@ extension CountryListView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
+    }
+}
+
+extension CountryListView: TableViewDataSourseDelegate {
+ 
+    func setDataToCell(indexPath: IndexPath) -> UITableViewCell {
+        guard let data = output?.countryList[indexPath.row] else { return UITableViewCell() }
+        let cell: CountryTableViewCell = tableView.dequeueCell(at: indexPath)
+        cell.setData(data: data)
+        return cell
     }
 }
