@@ -22,6 +22,7 @@ class NetworkErrorView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .lightGray
+        label.textAlignment = .center
         return label
     }()
     

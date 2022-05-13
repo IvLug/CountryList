@@ -25,6 +25,8 @@ final class RegionListView: BaseViewController {
         view.register(cellWithClass: RegionTableVIewCell.self)
         return view
     }()
+        
+    let storage = StorageManager<ProductData>()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,10 +11,13 @@ class DatailsTableViewCell: UITableViewCell {
     
     var allowsMultipleSelection: Bool = false
     var isParentSelected: Bool = false
+    var type: DatailsTableType?
             
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
         return label
     }()
     
@@ -41,7 +44,8 @@ class DatailsTableViewCell: UITableViewCell {
 
         titleLabel.snp.remakeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.right.equalToSuperview().inset(UIEdgeInsets(top: 11, left: 16, bottom: 11, right: 50))
+            make.left.top.bottom.equalToSuperview().inset(16)
+            make.right.equalTo(disclosureImageView.snp.left)
         }
         disclosureImageView.snp.makeConstraints { make in
             make.centerY.right.equalToSuperview()
@@ -51,7 +55,7 @@ class DatailsTableViewCell: UITableViewCell {
     }
 
     func getData(_ model: CurtainDataModel, child: String, isParrent: Bool) {
-                
+        self.type = model.type
         if isParrent {
             disclosureImageView.isHidden = false
             titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)

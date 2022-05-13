@@ -38,8 +38,8 @@ final class DetailCountryAssembly: ModuleAssembly {
         return assembly
     }
     
-    func setCountry(data: CountryModel) {
-        presenter.country = data
+    func setCountry(code: String) {
+        presenter.cca3 = code
     }
 }
 

@@ -20,6 +20,8 @@ class CurtainView: UIView {
     var height: CGFloat {
          self.tableView.contentSize.height
     }
+    
+    private var countryCodeVoid: ((_ sender: String) -> ())?
         
     private lazy var topView: TopView = {
         let view = TopView()
@@ -37,8 +39,9 @@ class CurtainView: UIView {
         return tableView
     }()
     
-    convenience init() {
+    convenience init(countryCodeVoid: ((_ sender: String) -> ())? = nil) {
         self.init(frame: .zero)
+        self.countryCodeVoid = countryCodeVoid
         configure()
     }
     
@@ -88,6 +91,7 @@ class CurtainView: UIView {
 extension CurtainView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell: DatailsTableViewCell = tableView.dequeueCell(at: indexPath)
         let model = output?.model[indexPath.section]
         if model?.children?.isEmpty == false && indexPath.row == 0 {
             output?.toggleExpansionOfType(with: indexPath.section)
@@ -100,6 +104,11 @@ extension CurtainView: UITableViewDelegate {
             if model?.children?.isEmpty == false, tableView.cellForRow(at: IndexPath(row: 0, section: indexPath.section)) != nil {
                 tableView.reloadRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .none)
                 tableViewRemake()
+            }
+            
+            if cell.type == .borders {
+                guard let code = model?.children?[indexPath.row] else { return }
+                countryCodeVoid?(code)
             }
         }
     }

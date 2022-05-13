@@ -10,6 +10,6 @@ extension CountryListRouter: CountryListRouterInput {
     
     func showCountryDetail(country: CountryModel) {
       let module = view?.showModule(DetailCountryAssembly.self)
-        module?.setCountry(data: country)
+        module?.setCountry(code: country.cca3 ?? "")
     }
 }

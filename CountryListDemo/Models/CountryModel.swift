@@ -8,8 +8,9 @@
 import Foundation
 
 struct ProductModel: Codable {
-    let nameNum: Int
+    let name: String
     let id: Float
+    let model: String
 }
 
 struct CountryModel: Codable {
@@ -39,12 +40,12 @@ struct CountryModel: Codable {
     let capitalInfo: CapitalInfo?
     let postalCode: PostalCode?
     let languages: [String:String]?
-    let translations: [String: Translation]?
+    let translations: [String:TranslationModel]?
 }
 
 // MARK: - Translation
-struct Translation: Codable {
-    let common, official: String
+struct TranslationModel: Codable {
+    let common, official: String?
 }
 
 // MARK: - CapitalInfo

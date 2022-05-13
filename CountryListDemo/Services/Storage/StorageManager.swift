@@ -32,8 +32,8 @@ class StorageManager<T: NSManagedObject> {
         
         let fetchRequest: NSFetchRequest<T> = T().fetchRequest()
         do {
-            let country = try viewContext.fetch(fetchRequest)
-            completion(.success(country))
+            let data = try viewContext.fetch(fetchRequest)
+            completion(.success(data))
         } catch let error {
             completion(.failure(error))
         }
@@ -46,6 +46,7 @@ class StorageManager<T: NSManagedObject> {
         for newValue in mirrorNewValue.children {
             if let key = newValue.label {
                 product.setValue(newValue.value, forKey: key)
+                print("Save")
             }
         }
         saveContext()
@@ -54,12 +55,17 @@ class StorageManager<T: NSManagedObject> {
     public func edit<U: Codable>(model: T, data: U) {
         let mirrorNewValue = Mirror(reflecting: data)
         
+        var isSave = false
+        
         for newValue in mirrorNewValue.children {
             if let key = newValue.label {
                 model.setValue(newValue.value, forKey: key)
+                isSave = true
             }
         }
-        saveContext()
+        if isSave {
+            saveContext()
+        }
     }
     
     public func delete(data: T) {
@@ -68,7 +74,7 @@ class StorageManager<T: NSManagedObject> {
     }
     
     // MARK: - Core Data Saving Support
-    func saveContext() {
+    private func saveContext() {
         if viewContext.hasChanges {
             do {
                 try viewContext.save()

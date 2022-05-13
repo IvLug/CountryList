@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Countries" representedClassName="Countries" syncable="YES">
-        <attribute name="country" optional="YES" attributeType="Transformable" customClassName="[CountryModel]"/>
+    <entity name="Country" representedClassName=".Country" syncable="YES">
+        <attribute name="capital" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="cca2" optional="YES" attributeType="String"/>
+        <attribute name="cca3" optional="YES" attributeType="String"/>
+        <attribute name="ccn3" optional="YES" attributeType="String"/>
+        <attribute name="cioc" optional="YES" attributeType="String"/>
+        <attribute name="continents" optional="YES" attributeType="Transformable"/>
+        <attribute name="languages" optional="YES" attributeType="Transformable" customClassName="[String:String]"/>
+        <attribute name="population" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="region" optional="YES" attributeType="String"/>
+        <attribute name="subregion" optional="YES" attributeType="String"/>
+        <attribute name="timezones" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="translations" optional="YES" attributeType="Transformable" customClassName="[String:Translation]"/>
+        <relationship name="flags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flags"/>
+        <relationship name="name" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CountryName"/>
     </entity>
-    <entity name="Country" representedClassName="Country" syncable="YES" codeGenerationType="class"/>
-    <entity name="MyProduct" representedClassName="MyProduct" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+    <entity name="CountryName" representedClassName="CountryName" syncable="YES" codeGenerationType="class">
+        <attribute name="common" optional="YES" attributeType="String"/>
+        <attribute name="official" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Currency" representedClassName="Currency" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="symbol" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Flags" representedClassName="Flags" syncable="YES" codeGenerationType="class">
+        <attribute name="png" optional="YES" attributeType="String"/>
+        <attribute name="svg" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ProductData" representedClassName="ProductData" isAbstract="YES" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="model" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flags"/>
+    </entity>
+    <entity name="Region" representedClassName="Region" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Translation" representedClassName="Translation" syncable="YES" codeGenerationType="class">
+        <attribute name="common" optional="YES" attributeType="String"/>
+        <attribute name="official" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
-        <element name="Countries" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="Country" positionX="172.23486328125" positionY="50.9075927734375" width="128" height="29"/>
-        <element name="MyProduct" positionX="-273.751220703125" positionY="79.50738525390625" width="128" height="43"/>
+        <element name="Country" positionX="0" positionY="54" width="128" height="239"/>
+        <element name="CountryName" positionX="27" positionY="81" width="128" height="59"/>
+        <element name="ProductData" positionX="9" positionY="99" width="128" height="74"/>
+        <element name="Region" positionX="-36" positionY="9" width="128" height="44"/>
+        <element name="Translation" positionX="54" positionY="144" width="128" height="59"/>
+        <element name="Currency" positionX="18" positionY="108" width="128" height="59"/>
+        <element name="Flags" positionX="27" positionY="126" width="128" height="59"/>
     </elements>
 </model>

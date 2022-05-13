@@ -163,7 +163,7 @@ extension CountryListView: CountryListViewInput {
     }
     
     func setData(data: [CountryModel]) {
-        tableView.estimatedRowHeight = 85
+        tableView.estimatedRowHeight = 40
         tableView.rowHeight = UITableView.automaticDimension
         dataSourse.setData(data: data)
     }

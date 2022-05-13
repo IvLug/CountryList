@@ -5,16 +5,23 @@ final class DetailCountryPresenter {
     var interactor: DetailCountryInteractorInput?
     var router: DetailCountryRouterInput?
     
-    var country: CountryModel?
-    
+    var cca3: String?
     var model: [CurtainDataModel] = []
 }
 
 extension DetailCountryPresenter: DetailCountryViewOutput {
     
+    func showCountry(whith code: String) {
+        router?.showCountry(whith: code)
+    }
+    
     func viewWillAppear() {
-        guard let id = country?.cca3 else { return }
+        guard let id = cca3 else { return }
         interactor?.fetchCountry(id: id)
+    }
+    
+    func backMain() {
+        router?.backMain()
     }
 }
 
@@ -32,7 +39,6 @@ extension DetailCountryPresenter: DetailCountryInteractorOutput {
     func setLoadingStatus(type: ErrorType) {
         view?.setLoadingStatus(type: type)
     }
-    
     
     func setDataToModel(data: CountryModel) {
         let model = [
@@ -65,7 +71,12 @@ extension DetailCountryPresenter: DetailCountryInteractorOutput {
                 model: data,
                 title: "Population:",
                 type: .currencies,
-                children: setChildrenData(data: data, type: .population))
+                children: setChildrenData(data: data, type: .population)),
+            CurtainDataModel(
+                model: data,
+                title: "Borders:",
+                type: .borders,
+                children: setChildrenData(data: data, type: .borders))
         ]
         
         getData(data: model)
@@ -87,6 +98,8 @@ extension DetailCountryPresenter: DetailCountryInteractorOutput {
         case .population:
             let population = (data.population ?? 0).description
             return [population]
+        case .borders:
+            return data.borders ?? []
         }
     }
 }

@@ -12,7 +12,7 @@ protocol DetailCountryInteractorOutput: AnyObject {
 final class DetailCountryInteractor {
     weak var output: DetailCountryInteractorOutput?
     
-    private func fetchCountryRequest(id: String, completion: @escaping(Result<[CountryModel], AFError>) -> Void) {
+    private func fetchCountryRequest(id: String, completion: @escaping(_ error: Error?, DataResponse<[CountryModel], AFError>) -> Void) {
         let route = CountriesNetworkRouter.fetchCountry(id: id)
         NetworkService.shared.performRequest(route: route, completion: completion)
     }
@@ -21,8 +21,8 @@ final class DetailCountryInteractor {
 extension DetailCountryInteractor: DetailCountryInteractorInput {
     
     func fetchCountry(id: String) {
-        fetchCountryRequest(id: id) { [weak output] result in
-            switch result {
+        fetchCountryRequest(id: id) { [weak output] error, response in
+            switch response.result {
             case .success(let data):
                 guard let data = data.first else { return }
                 output?.setDataToModel(data: data)

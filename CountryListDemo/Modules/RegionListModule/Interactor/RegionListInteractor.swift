@@ -12,7 +12,7 @@ protocol RegionListInteractorOutput: AnyObject {
 final class RegionListInteractor {
     weak var output: RegionListInteractorOutput?
     
-    private func fetchCountryListRequest(completion: @escaping(Result<[CountryModel], AFError>) -> Void) {
+    private func fetchCountryListRequest(completion:  @escaping(_ error: Error?, DataResponse<[CountryModel], AFError>) -> Void) {
         let route = CountriesNetworkRouter.fetchCountryList
         NetworkService.shared.performRequest(route: route, completion: completion)
     }
@@ -21,8 +21,8 @@ final class RegionListInteractor {
 extension RegionListInteractor: RegionListInteractorInput {
     
     func fetchCountryList() {
-        fetchCountryListRequest { [weak output] result in
-            switch result {
+        fetchCountryListRequest { [weak output] error, response in
+            switch response.result {
             case .success(let data):
                 output?.getDataCountryList(data: data)
             case .failure(let error):

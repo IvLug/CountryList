@@ -20,4 +20,5 @@ enum DatailsTableType {
     case translations
     case currencies
     case population
+    case borders
 }
