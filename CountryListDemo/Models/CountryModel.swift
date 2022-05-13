@@ -103,6 +103,7 @@ struct Maps: Codable {
 // MARK: - Name
 struct Name: Codable {
     let common, official: String?
+    let nativeName: [String: Name]?
 }
 
 // MARK: - PostalCode

@@ -9,6 +9,15 @@ import UIKit
 
 class CountryCellView: UIView {
     
+    private lazy var countryNameLat: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
+    
     private lazy var countryName: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -90,6 +99,7 @@ class CountryCellView: UIView {
     }
     
     func prepareForReuse() {
+        countryNameLat.text = ""
         countryName.text = ""
         capital.text = ""
         flagImage.image = nil
@@ -127,14 +137,20 @@ class CountryCellView: UIView {
     private func addSubViews() {
         addSubview(flagImage)
         addSubview(bacgroundView)
+        bacgroundView.addSubview(countryNameLat)
         bacgroundView.addSubview(countryName)
         bacgroundView.addSubview(stackView)
     }
     
     private func setConstraints() {
         
-        countryName.snp.makeConstraints { make in
+        countryNameLat.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(8)
+            make.centerX.equalToSuperview()
+            make.left.right.equalToSuperview().inset(16)
+        }
+        countryName.snp.makeConstraints { make in
+            make.top.equalTo(countryNameLat.snp.bottom).offset(8)
             make.centerX.equalToSuperview()
             make.left.right.equalToSuperview().inset(16)
         }
@@ -156,7 +172,8 @@ class CountryCellView: UIView {
     func setData(data: CountryModel) {
         stackView.addArrangedSubview(capital)
         stackView.addArrangedSubview(continentsTitle)
-        countryName.text = data.name?.official
+        countryNameLat.text = data.name?.official
+        countryName.text = data.name?.nativeName?.first?.value.official
         capital.attributedText = setValueToLabel(key: "Capital: ", value: data.capital?.first)
         continentsTitle.attributedText = setValueToLabel(key: "Continent: ", value: data.continents?.first)
         
