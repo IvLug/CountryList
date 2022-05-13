@@ -33,7 +33,6 @@ extension DetailCountryPresenter: DetailCountryInteractorOutput {
         let status: ErrorType = data.isEmpty ? .dataNotFound : .notError
         setLoadingStatus(type: status)
         view?.setData(data: country)
-        view?.reloadData()
     }
     
     func setLoadingStatus(type: ErrorType) {
@@ -70,7 +69,7 @@ extension DetailCountryPresenter: DetailCountryInteractorOutput {
             CurtainDataModel(
                 model: data,
                 title: "Population:",
-                type: .currencies,
+                type: .population,
                 children: setChildrenData(data: data, type: .population)),
             CurtainDataModel(
                 model: data,
@@ -78,7 +77,6 @@ extension DetailCountryPresenter: DetailCountryInteractorOutput {
                 type: .borders,
                 children: setChildrenData(data: data, type: .borders))
         ]
-        
         getData(data: model)
     }
     

@@ -18,7 +18,7 @@ class CurtainView: UIView {
     var previousIndexPath: IndexPath?
             
     var height: CGFloat {
-         self.tableView.contentSize.height
+         self.tableView.contentSize.height + 50
     }
     
     private var countryCodeVoid: ((_ sender: String) -> ())?
@@ -72,6 +72,7 @@ class CurtainView: UIView {
     
     func setData(data: CountryModel) {
         topView.setData(data: data)
+        reloadData()
     }
     
     func reloadData() {
@@ -105,9 +106,8 @@ extension CurtainView: UITableViewDelegate {
                 tableView.reloadRows(at: [IndexPath(row: 0, section: indexPath.section)], with: .none)
                 tableViewRemake()
             }
-            
             if cell.type == .borders {
-                guard let code = model?.children?[indexPath.row] else { return }
+                guard let code = model?.children?[indexPath.row - 1] else { return }
                 countryCodeVoid?(code)
             }
         }
@@ -131,12 +131,11 @@ extension CurtainView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: DatailsTableViewCell = tableView.dequeueCell(at: indexPath)
-        
-        guard let model = output?.model else { return UITableViewCell() }
+         guard let model = output?.model else { return UITableViewCell() }
         
         if indexPath.row == 0 {
             cell.allowsMultipleSelection = true
-            cell.getData(model[indexPath.section], child: "", isParrent: true)
+            cell.getData(model[indexPath.section], child: "!!!", isParrent: true)
             return cell
         } else {
             guard let model = output?.model[indexPath.section],

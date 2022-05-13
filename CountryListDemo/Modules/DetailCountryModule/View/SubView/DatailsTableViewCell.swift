@@ -66,6 +66,5 @@ class DatailsTableViewCell: UITableViewCell {
             titleLabel.text = child
             titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         }
-        
     }
 }
